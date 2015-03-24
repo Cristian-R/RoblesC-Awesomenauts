@@ -13,6 +13,9 @@ game.PlayerEntity = me.Entity.extend({
                     return(new me.Rect(0, 0, 64, 64)).toPolygon();
                 }
             }]);
+        
+        this.type = "PlayerEntity";
+        this.health = 20;
         this.body.setVelocity(5, 20);
         
         
@@ -46,8 +49,8 @@ game.PlayerEntity = me.Entity.extend({
             this.body.vel.x = 0;
         }
 
-        if (me.input.isKeyPressed("jump") && !this.jumping && !this.falling) {
-            this.jumping = true;
+        if (me.input.isKeyPressed("jump") && !this.body.jumping && !this.body.falling) {
+            this.body.jumping = true;
             this.body.vel.y -= this.body.accel.y * me.timer.tick;
         }
 
@@ -79,7 +82,10 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, "update", [delta]);
         return true;
     },
-    
+    loseHealth: function(damage){
+        this.health = this.health - damage;
+        console.log(this.health);
+    },
     collideHandler: function(response) {
         if (response.b.type === 'EnemyBaseEntity') {
             var ydif = this.pos.y - response.b.pos.y;
@@ -136,8 +142,7 @@ game.PlayerBaseEntity = me.Entity.extend({
         this.body.update(delta);
         this._super(me.Entity, "update", [delta]);
         return true;
-    },
-    
+    }, 
     loseHealth: function(damage){
         this.health = this.health - damage;
     },
@@ -180,11 +185,10 @@ game.EnemyBaseEntity = me.Entity.extend({
     },
     onCollision: function() {
 
-    },
-    
+    },  
     loseHealth: function(){
         this.health--;
-    }
+    },
 
 });
 
@@ -228,7 +232,7 @@ game.EnemyCreep = me.Entity.extend({
         return true;
     },
     collideHandler:function(response){
-        if(response.b.type ==="PlayerBaseEntity")
+        if(response.b.type ==="PlayerBase"){
             this.attacking=true;
             //this.lastAttacking=this.now;
             this.body.vel.x = 0;
@@ -238,6 +242,23 @@ game.EnemyCreep = me.Entity.extend({
                 response.b.loseHealth(1);
             
             }
+        }else if(response.b.type==="PlayerEntity"){
+            var xdif = this.pos.x - response.b.pos.x;
+            
+                        this.attacking=true;
+            //this.lastAttacking=this.now;
+          
+            if(xdif>0){
+               
+                this.pos.x = this.pos.x + 1;
+                this.body.vel.x = 0;
+            }  
+            if((this.now-this.lastMit >= 1000) && xdif>0){
+                this.lastMit = this.now;
+                response.b.loseHealth(1);
+            
+            }
+        }
     }
 });
 
