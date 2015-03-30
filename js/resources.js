@@ -1,6 +1,6 @@
 game.resources = [
 
-	/* Graphics. 
+	/* Graphics.
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
