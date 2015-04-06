@@ -9,18 +9,25 @@ var game = {
                 enemyBaseHealth: 10,
                 playerBaseHealth: 10,
                 enemyCreepHealth: 10,
-                playerHealth:10,
+       //       playerHealth:10,
                 enemyCreepAttack: 1,
                 playerAttack: 1,
                 playerAttackTimer: 1000,
        //       orcBaseDamage:1000,
-       //       orcBaseHealth:10,
+       //         orcBaseHealth:10,
        //       orcBaseSpeed:10,
+                orcHealth:10,
                 enemyCreepAttackTimer: 1000,
                 playerMoveSpeed: 5,
                 creepMoveSpeed:5,
                 gameManager: "",
-                player: ""
+                player: "",
+                exp: 0,
+                gold: 0,
+                exp1: 0,
+                exp2: 0,
+                exp3: 0,
+                exp4: 0
 	},
 	
 	
@@ -66,5 +73,5 @@ var game = {
 		me.state.set(me.state.PLAY, new game.PlayScreen());
 
 		// Start the game.
-		me.state.change(me.state.PLAY);	}
+		me.state.change(me.state.MENU);	}
 };
