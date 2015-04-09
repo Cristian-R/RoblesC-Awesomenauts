@@ -14,7 +14,7 @@ game.TitleScreen = me.ScreenObject.extend({
                     },
                     draw: function(renderer){
                         
-                        this.font.draw(renderer.getContext(), "Press Enter to play", 325, 530);
+                        this.font.draw(renderer.getContext(), 'Press "Enter" to play', 325, 530);
                     }
                 })));
                 this.handler = me.event.subscribe(me.event.KEYDOWN, function(action, keyCode, edge){

@@ -18,7 +18,6 @@ game.GameManager = Object.extend({
             console.log("Current gold:" + game.data.gold);
         }
 
-
         if (Math.round(this.now / 1000) % 10 === 0 && (this.now - this.lastCreep >= 1000)) {
             this.lastCreep = this.now;
             var creepe = me.pool.pull("EnemyCreep", 1000, 0, {});
@@ -27,3 +26,4 @@ game.GameManager = Object.extend({
         return true;
     }
 });
+

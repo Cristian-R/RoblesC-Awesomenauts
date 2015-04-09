@@ -9,7 +9,6 @@ game.PlayerBaseEntity = me.Entity.extend({
                 getShape: function() {
                     return(new me.Rect(0, 0, 100, 70)).toPolygon();
                 }
-
             }]);
         this.broken = false;
         this.health = game.data.playerBaseHealth;
@@ -33,7 +32,8 @@ game.PlayerBaseEntity = me.Entity.extend({
         this.health = this.health - damage;
     },
     onCollision: function() {
-
+ 
     }
 
 });
+                                                                                                                                                                         
