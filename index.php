@@ -3,6 +3,7 @@
     <head>
         <title>RoblesC-Awesomenauts</title>
         <link rel="stylesheet" type="text/css" media="screen" href="index.css">
+        <link rel="shcortcut icon" href="https://videogamerrob.files.wordpress.com/2012/05/awesomenauts_2_1600x1200.jpg">
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">

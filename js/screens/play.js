@@ -11,9 +11,14 @@ game.PlayScreen = me.ScreenObject.extend({
         this.resetPlayer(0, 420);
       
         // Adds the player to the world.
-        var gamemanager = me.pool.pull("GameManager", 0, 0, {});
+        var gameTimerManager = me.pool.pull("GameTimerManager", 0, 0, {});
+        me.game.world.addChild(gameTimerManager, 0);
         
-        me.game.world.addChild(gamemanager, 0);
+        var heroDeathManager = me.pool.pull("HeroDeathManager", 0, 0, {});
+        me.game.world.addChild(heroDeathManager, 0);
+        
+        var experienceManager = me.pool.pull("ExperienceManager", 0, 0, {});
+        me.game.world.addChild(experienceManager, 0);
         
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.LEFT, "left");
